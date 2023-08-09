@@ -1,4 +1,5 @@
 require('dotenv').config()
+require('./utils/mongodb_connection')
 
 const express = require('express')
 const app = express()
@@ -14,23 +15,20 @@ app.use(
 )
 
 app.set('view engine', 'ejs')
+app.use(express.static('./public'))
 
-const userApi = require('./routes/api/user')
-app.use('/api',userApi)
+const consultationApi = require('./routes/api/consultation')
+app.use('/api',consultationApi)
 
-const userUi = require('./routes/ui/user')
-app.use(userUi)
+// const userUi = require('./routes/ui/')
+// app.use(userUi)
 
 app.get('/',(req,res) =>{
     return res.status(200).render('index')
 })
 
 app.get('*', (req,res) => {
-    return res.status(404).render('handlers/404',{
-        url: req.url,
-        statusCode: 404,
-        message: "Page Was Not Found"
-    })
+    return res.status(404).render('handlers/404')
 })
 
 app.listen(port, () => console.log(`running on port ${port}`))

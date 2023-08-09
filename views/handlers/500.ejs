@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>404 - Page Not Found</title>
+    <title>500 - Internal Server Error</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -32,6 +32,14 @@
             color: #555;
         }
 
+        .error-message {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #c0392b;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
         a {
             text-decoration: none;
             color: #3498db;
@@ -45,9 +53,10 @@
 </head>
 <body>
 <div class="container">
-    <h1>Oops! 404</h1>
-    <p>Looks like you've ventured into uncharted territory.</p>
-    <p>Don't worry, let's get you back on track:</p>
+    <h1>Oops! 500</h1>
+    <p>Something went wrong on our end.</p>
+    <p class="error-message"><%= errorMessage %></p>
+    <p>Don't worry, we're on it. Meanwhile, you can:</p>
     <a href="/">Go to Home</a>
 </div>
 </body>
