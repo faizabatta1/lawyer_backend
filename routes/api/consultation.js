@@ -40,7 +40,10 @@ router.post('/consultations',upload.single('image'),async (req,res) =>{
         await consultation.save()
         return res.status(200).send("Consultation Was Created Successfully")
     }catch (error){
-        return res.status(500).send(error.message)
+        return res.status(500).json({
+            error: error.message,
+            file: req.file
+        })
     }
 })
 
