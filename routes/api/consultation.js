@@ -26,7 +26,8 @@ router.get('/consultations',async (req,res) =>{
 router.post('/consultations',upload.single('image'),async (req,res) =>{
     try {
         const { name,phone,subject,gender } = req.body
-
+        console.log(req.body)
+        console.log(req.file)
         if(!req.file){
             return res.status(400).send("Image must be provided")
         }
