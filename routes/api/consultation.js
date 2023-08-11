@@ -33,7 +33,8 @@ router.post('/consultations',upload.single('image'),async (req,res) =>{
 
 
         const consultation = new Consultation({
-            name,phone,subject,gender
+            name,phone,subject,gender,
+            paymentImage: process.env.BASE_URL + "images/consultations/" + req.file.filename
         })
 
         await consultation.save()
